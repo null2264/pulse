@@ -29,5 +29,10 @@
   },
   "devDependencies": {
     "gecko-types": "github:quark-platform/gecko-types"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "gluon-build@1.0.0-rc.5": "patches/gluon-build@1.0.0-rc.5.patch"
+    }
   }
 }

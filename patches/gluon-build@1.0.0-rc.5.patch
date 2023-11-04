@@ -1,0 +1,21 @@
+diff --git a/dist/constants/mozconfig.js b/dist/constants/mozconfig.js
+index 0bc8300a6909ce5730b368569a745ab194cf0189..b1418b324d09944039d5cddc438b97ff6c479111 100644
+--- a/dist/constants/mozconfig.js
++++ b/dist/constants/mozconfig.js
+@@ -26,6 +26,7 @@ ac_add_options --disable-optimize`;
+             buildOptions = `# Release build settings
+ ac_add_options --disable-debug
+ ac_add_options --enable-optimize
++ac_add_options --enable-rust-simd
+ ${platformOptimize} # Taken from waterfox`;
+             break;
+         }
+@@ -54,7 +55,7 @@ function getPlatformOptimiseFlags() {
+     let optimiseFlags = `# Unknown platform ${process.platform}`;
+     switch (process.platform) {
+         case 'linux': {
+-            optimiseFlags = `ac_add_options --enable-optimize="-O3 -march=haswell -mtune=haswell -w"`;
++            optimiseFlags = `ac_add_options --enable-optimize="-O3 -march=nehalem -mtune=znver3 -w"`;
+             break;
+         }
+         case 'darwin': {
