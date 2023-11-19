@@ -71,6 +71,10 @@
   margin-right: calc(calc(var(--vertical-tabs-max-width) - var(--vertical-tabs-collapse-width)) * -1) !important;
 }
 
+#browser #TabsToolbar[collapse='true'] + #verticaltabs-splitter {
+  display: none;
+}
+
 /* ========================================================================== */
 /* Tab styles */
 
