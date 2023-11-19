@@ -202,7 +202,7 @@ jobs:
           path: ./dist/update
 
   mac:
-    runs-on: macos-13
+    runs-on: macos-latest
     needs: [build-data]
 
     steps:
@@ -370,11 +370,11 @@ jobs:
           path: ./pulse-browser.source.tar.gz
 
   windows:
-    runs-on: tricky-win
+    runs-on: windows-latest
     needs: [build-data]
 
     steps:
-      - uses: trickypr/checkout@main
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
 
@@ -392,13 +392,13 @@ jobs:
         run: pnpm imp
 
       - name: Build
-        shell: powershell.exe C:\mozilla-build\start-shell.bat "{0}"
+        shell: pwsh
         run: |
           cd /c/actions-runner/_work/browser/browser # mozillabuild defaults to ~
           pnpm build --skip-patch-check
 
       - name: Package
-        shell: powershell.exe C:\mozilla-build\start-shell.bat "{0}"
+        shell: pwsh
         run: |
           cd /c/actions-runner/_work/browser/browser # mozillabuild defaults to ~
           pnpm package
