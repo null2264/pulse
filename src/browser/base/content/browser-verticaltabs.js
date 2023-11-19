@@ -194,7 +194,7 @@ var VerticalTabs = {
 
     document.querySelector(":root").style.setProperty(
       '--vertical-tabs-max-width',
-      Services.prefs.getIntPref(VERTICAL_TABS_WIDTH, 200)
+      `${Services.prefs.getIntPref(VERTICAL_TABS_WIDTH, 200)}px`
     )
 
     this.tabsToolbar?.setAttribute(
