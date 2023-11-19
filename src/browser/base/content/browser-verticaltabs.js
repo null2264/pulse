@@ -192,15 +192,21 @@ var VerticalTabs = {
     if (this.tabsToolbar)
       this._widthObserver.observe(this.tabsToolbar, { attributes: true })
 
+    document.querySelector(":root").style.setProperty(
+      '--vertical-tabs-max-width',
+      Services.prefs.getIntPref(VERTICAL_TABS_WIDTH, 200)
+    )
+
     this.tabsToolbar?.setAttribute(
       'width',
       Services.prefs.getIntPref(VERTICAL_TABS_WIDTH, 200),
     )
-    if (this.tabsToolbar)
+    if (this.tabsToolbar) {
       this.tabsToolbar.style.width = `${Services.prefs.getIntPref(
         VERTICAL_TABS_WIDTH,
         200,
       )}px`
+    }
 
     if (!this.splitter) {
       const separator = document.createXULElement('splitter')
