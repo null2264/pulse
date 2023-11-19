@@ -5,9 +5,7 @@
  */
 :root {
   --vertical-tabs-max-width: 200px;
-  --vertical-tabs-collapse-width: calc(
-    16px + 2 * var(--inline-tab-padding) + 2 * var(--tab-block-margin)
-  );
+  --vertical-tabs-collapse-width: calc(var(--tab-min-height) + 2px + var(--tab-block-margin) * 2);
 }
 
 /* ========================================================================== */
