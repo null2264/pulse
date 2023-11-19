@@ -4,7 +4,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 :root {
-  --vertical-tabs-max-width: 350px;
+  --vertical-tabs-max-width: 200px;
   --vertical-tabs-collapse-width: calc(
     16px + 2 * var(--inline-tab-padding) + 2 * var(--tab-block-margin)
   );
@@ -54,13 +54,21 @@
 }
 
 #browser #TabsToolbar[collapse='true'] {
-  max-width: var(--vertical-tabs-collapse-width);
+  position: relative !important;
+  transition: all 300ms !important;
+  min-width: var(--vertical-tabs-collapse-width) !important;
+  max-width: var(--vertical-tabs-collapse-width) !important;
+  z-index: 1;
 }
 
 /** On collapse hover of tabs or splitter, the max width should increase again */
 #browser #TabsToolbar[collapse='true']:hover
 /* #TabsToolbar[collapse='true']:has(+ #verticaltabs-splitter:hover)  */ {
-  max-width: var(--vertical-tabs-max-width);
+  transition: all 300ms !important;
+  min-width: var(--vertical-tabs-max-width) !important;
+  max-width: var(--vertical-tabs-max-width) !important;
+  z-index: 2;
+  margin-right: calc(calc(var(--vertical-tabs-max-width) - var(--vertical-tabs-collapse-width)) * -1) !important;
 }
 
 /* ========================================================================== */
