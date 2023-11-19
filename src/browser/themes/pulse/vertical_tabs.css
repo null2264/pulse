@@ -8,6 +8,8 @@
   --vertical-tabs-collapse-width: calc(
     16px + 2 * var(--inline-tab-padding) + 2 * var(--tab-block-margin)
   );
+  --thin-tab-width: 55px;
+  --wide-tab-width: 200px;
 }
 
 /* ========================================================================== */
@@ -56,8 +58,8 @@
 #browser #TabsToolbar[collapse='true'] {
   position: relative !important;
   transition: all 300ms !important;
-  min-width: var(--vertical-tabs-collapse-width) !important;
-  max-width: var(--vertical-tabs-collapse-width) !important;
+  min-width: var(--thin-tab-width) !important;
+  max-width: var(--thin-tab-width) !important;
   z-index: 1;
 }
 
@@ -65,10 +67,10 @@
 #browser #TabsToolbar[collapse='true']:hover
 /* #TabsToolbar[collapse='true']:has(+ #verticaltabs-splitter:hover)  */ {
   transition: all 300ms !important;
-  min-width: var(--vertical-tabs-max-width) !important;
-  max-width: var(--vertical-tabs-max-width) !important;
+  min-width: var(--wide-tab-width) !important;
+  max-width: var(--wide-tab-width) !important;
   z-index: 2;
-  margin-right: calc(calc(var(--vertical-tabs-max-width) - var(--vertical-tabs-collapse-width)) * -1) !important;
+  margin-right: calc(calc(var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
 }
 
 #browser #TabsToolbar[collapse='true'] + #verticaltabs-splitter {
