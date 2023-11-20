@@ -1,5 +1,5 @@
---- a/config.py
-+++ b/config.py
+--- a/python/mach/mach/config.py
++++ b/python/mach/mach/config.py
 @@ -23,7 +23,7 @@
  
  import six
