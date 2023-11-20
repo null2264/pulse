@@ -408,7 +408,7 @@ jobs:
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
       - name: Download
-        shell: bash
+        shell: pwsh
         run: pnpm download
 
       - name: Import
