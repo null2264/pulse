@@ -1,3 +1,16 @@
+diff --git a/dist/commands/license-check.js b/dist/commands/license-check.js
+index e8672b09fcd704a66e2fed3872eae91295796a34..9152903d72472d6cb6ddfd11eba9e0a5a70cb83b 100644
+--- a/dist/commands/license-check.js
++++ b/dist/commands/license-check.js
+@@ -46,7 +46,7 @@ async function isValidLicense(path) {
+     const hasLicense = (lines.includes('the Mozilla Public') &&
+         lines.includes('If a copy of the MPL was') &&
+         lines.includes('http://mozilla.org/MPL/2.0/')) ||
+-        licenseIgnore.test(contents.join('\n'));
++        contents[0].includes('Ignore license in this file');
+     return hasLicense;
+ }
+ exports.isValidLicense = isValidLicense;
 diff --git a/dist/constants/mozconfig.js b/dist/constants/mozconfig.js
 index 0bc8300a6909ce5730b368569a745ab194cf0189..b1418b324d09944039d5cddc438b97ff6c479111 100644
 --- a/dist/constants/mozconfig.js
