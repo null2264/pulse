@@ -80,7 +80,7 @@
       "brandShortName": "Pulse Browser",
       "brandFullName": "Pulse Browser Alpha",
       "release": {
-        "displayVersion": "1.0.0-a.95",
+        "displayVersion": "1.0.0-a.96",
         "github": {
           "repo": "pulse-browser/browser"
         },
