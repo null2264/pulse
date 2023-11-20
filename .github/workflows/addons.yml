@@ -29,7 +29,7 @@ jobs:
         with:
           repository: null2264/pulse-updates
           path: updates
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ROBOT_TOKEN }}
 
       - name: Copy update manifests
         run: |
