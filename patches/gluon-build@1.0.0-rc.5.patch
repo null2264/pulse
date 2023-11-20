@@ -11,6 +11,26 @@ index e8672b09fcd704a66e2fed3872eae91295796a34..9152903d72472d6cb6ddfd11eba9e0a5
      return hasLicense;
  }
  exports.isValidLicense = isValidLicense;
+diff --git a/dist/constants/index.js b/dist/constants/index.js
+index 938dc8f591c32abc3b54da8a1ae285508a441d47..31fe4f2fdb99ab397a517b44b254984358b78bee 100644
+--- a/dist/constants/index.js
++++ b/dist/constants/index.js
+@@ -68,9 +68,12 @@ if (process.platform == 'win32') {
+         exports.BASH_PATH = (0, node_path_1.resolve)(gitPath, '../..', 'bin/bash.exe');
+         if (!(0, node_fs_1.existsSync)(exports.BASH_PATH)) {
+             log_1.log.debug(`Could not find bash at ${exports.BASH_PATH}`);
+-            exports.BASH_PATH = execa_1.default.sync('where.exe bash.exe').stdout.toString();
+-            if (!exports.BASH_PATH.includes('bash.exe')) {
+-                log_1.log.error('Could not find bash, aborting');
++            exports.BASH_PATH = (0, node_path_1.resolve)('C:/msys64/usr/bin/bash.exe');
++            if (!(0, node_fs_1.existsSync)(exports.BASH_PATH)) {
++                exports.BASH_PATH = execa_1.default.sync('where.exe bash.exe').stdout.toString();
++                if (!exports.BASH_PATH.includes('bash.exe')) {
++                    log_1.log.error('Could not find bash, aborting');
++                }
+             }
+         }
+         log_1.log.debug(`Found bash at ${exports.BASH_PATH}`);
 diff --git a/dist/constants/mozconfig.js b/dist/constants/mozconfig.js
 index 0bc8300a6909ce5730b368569a745ab194cf0189..b1418b324d09944039d5cddc438b97ff6c479111 100644
 --- a/dist/constants/mozconfig.js

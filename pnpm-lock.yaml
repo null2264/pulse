@@ -6,13 +6,13 @@ settings:
 
 patchedDependencies:
   gluon-build@1.0.0-rc.5:
-    hash: roy52ogfy7jiz7hgdhz5cbb3r4
+    hash: amyggeysefij7pvgfgswk7fpza
     path: patches/gluon-build@1.0.0-rc.5.patch
 
 dependencies:
   gluon-build:
     specifier: ^1.0.0-rc.5
-    version: 1.0.0-rc.5(patch_hash=roy52ogfy7jiz7hgdhz5cbb3r4)
+    version: 1.0.0-rc.5(patch_hash=amyggeysefij7pvgfgswk7fpza)
 
 devDependencies:
   gecko-types:
@@ -398,7 +398,7 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: false
 
-  /gluon-build@1.0.0-rc.5(patch_hash=roy52ogfy7jiz7hgdhz5cbb3r4):
+  /gluon-build@1.0.0-rc.5(patch_hash=amyggeysefij7pvgfgswk7fpza):
     resolution: {integrity: sha512-TJMv24pMQPo3eXQLacJ9xS1qcwPt/WERw9xTQImbnXWCe9dn6d0nAD9FamVZXZvNU7jzPcObjoPXytwTP1yCWw==}
     hasBin: true
     dependencies:
