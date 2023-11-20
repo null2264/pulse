@@ -1,0 +1,11 @@
+--- a/config.py
++++ b/config.py
+@@ -23,7 +23,7 @@
+ 
+ import six
+ from six import string_types
+-from six.moves.configparser import NoSectionError, RawConfigParser
++from configparser import NoSectionError, RawConfigParser
+ 
+ 
+ class ConfigException(Exception):

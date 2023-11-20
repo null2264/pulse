@@ -261,6 +261,7 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
       - name: Load gluon CI setup
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
