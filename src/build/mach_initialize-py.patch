@@ -1,5 +1,5 @@
---- a/build/mach_initialize.py	2023-11-20 13:30:06.970887788 +0700
-+++ b/build/mach_initialize.py	2023-11-20 13:30:15.534495135 +0700
+--- a/build/mach_initialize.py
++++ b/build/mach_initialize.py
 @@ -151,6 +151,7 @@
          for module in (
              os.path.join("python", "mach"),
