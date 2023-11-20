@@ -69,8 +69,8 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 🔖 Update version to ${{ steps.data.outputs.version }}
-          commit_user_name: Fushra Robot
-          commit_user_email: trickypr@gmail.com
+          commit_user_name: Z3R0
+          commit_user_email: palembani@gmail.com
 
   linux:
     runs-on: ubuntu-latest
