@@ -215,6 +215,10 @@ jobs:
         with:
           submodules: recursive
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
       - name: Setup git
         run: |
           git config --global user.email "trickypr@users.noreply.github.com"
