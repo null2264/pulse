@@ -223,7 +223,6 @@ jobs:
       - name: Install system dependencies
         run: |
           brew install cairo sccache gnu-tar mercurial
-          pip install -U six urllib3
 
       - name: Force usage fo gnu-tar
         run: |
@@ -275,6 +274,7 @@ jobs:
         run: |
           rm -rf ./engine/third_party/python/six
           rm -rf ./engine/third_party/python/urllib3
+          pip install six urllib3 -t ./engine/third_party/python/
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
