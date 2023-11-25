@@ -418,7 +418,7 @@ jobs:
         run: |
           curl -L https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe --output MozillaBuildSetup-Latest.exe
           "/c/Program Files/7-Zip/7z.exe" x MozillaBuildSetup-Latest.exe -o/c/mozilla-build
-          mkdir /c/mozilla-build/tmp
+          mkdir /c/mozilla-build/msys2/tmp
 
       - name: Install dependencies
         run: pnpm install
