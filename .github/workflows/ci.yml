@@ -33,3 +33,12 @@ jobs:
 
       - name: Check license
         run: pnpm run gluon lc
+
+  debug:
+    name: CI Testing
+    runs-on: windows-latest
+
+    steps:
+      - name: Tar
+        shell: pwsh
+        run: tar
