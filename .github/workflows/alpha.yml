@@ -498,7 +498,7 @@ jobs:
         with:
           repository: pulse-browser/updates
           path: updates
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ROBOT_TOKEN }}
 
       - name: Copy update manifests
         run: |
@@ -510,63 +510,6 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 🔖 Upload update manifests ${{ needs.build-data.outputs.version }}
-          commit_user_name: Fushra Robot
-          commit_user_email: trickypr@gmail.com
+          commit_user_name: Z3R0
+          commit_user_email: palembani@gmail.com
           repository: ./updates
-
-  distro-flatpak:
-    name: Build flatpak repos
-    needs: [build-data, release]
-    runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/alpha' }}
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: pulse-browser/packages
-          token: ${{ secrets.GITHUB_TOKEN }}
-          submodules: recursive
-
-      - name: Ensure repo is on main branch
-        run: |
-          cd repo
-          git checkout main
-          git pull
-
-      - name: Install flatpak builder
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y flatpak-builder
-
-      - name: Install build dependancies
-        run: |
-          sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak install flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08 org.mozilla.firefox.BaseApp//22.08 -y
-
-      - name: Import GPG keys
-        run: |
-          mkdir ~/.gpg
-          echo -n "$GPG_SIGNING_KEY" | base64 --decode | gpg --import --homedir ~/.gpg
-        env:
-          GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
-
-      - name: Build flatpak
-        run: |
-          cd flatpak
-          ./build.sh alpha
-
-      - name: Upload flatpak repo
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 📦 Upload flatpak for ${{ needs.build-data.outputs.version }}
-          commit_user_name: Fushra Robot
-          commit_user_email: trickypr@gmail.com
-          repository: ./repo
-
-      - name: Update repo version in package
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 📦 Upload flatpak for ${{ needs.build-data.outputs.version }}
-          commit_user_name: Fushra Robot
-          commit_user_email: trickypr@gmail.com
-          repository: .
