@@ -412,6 +412,10 @@ jobs:
         with:
           name: pulse-browser.source.tar.gz
 
+      - name: Debug
+        shell: bash
+        run: ls -l
+
       - name: Extract source
         uses: a7ul/tar-action@v1.1.0
         id: extract
