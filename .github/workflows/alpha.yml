@@ -428,19 +428,19 @@ jobs:
           tar -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
-        shell: bash
+        shell: C:\mozilla-build\start-shell.bat -here -e {0}
         run: |
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
 
       - name: Gluon build
-        shell: bash
+        shell: C:\mozilla-build\start-shell.bat -here -e {0}
         run: |
           pnpm build --verbose
 
       - name: Package
-        shell: bash
+        shell: C:\mozilla-build\start-shell.bat -here -e {0}
         run: |
           pnpm package
           mv ./dist/output.mar windows.mar
