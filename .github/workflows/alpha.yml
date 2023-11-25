@@ -412,17 +412,11 @@ jobs:
         with:
           name: pulse-browser.source.tar.gz
 
-      - name: Debug
+      - name: Unpack source
         shell: bash
-        run: ls -l
-
-      - name: Extract source
-        uses: a7ul/tar-action@v1.1.0
-        id: extract
-        with:
-          command: x
-          cwd: ./engine
-          files: pulse-browser.source.tar.gz
+        run: |
+          ls -l
+          tar --strip-components=1 -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
         shell: bash
