@@ -1,8 +1,8 @@
 diff --git a/dist/commands/download/firefox.js b/dist/commands/download/firefox.js
-index 93e14e5abf11963b47f657a61f4e0a7e5bf1cf42..2058d7dfc022935541134cbf17d3b9e52e0f41c7 100644
+index 93e14e5abf11963b47f657a61f4e0a7e5bf1cf42..74165f84cefca6ddec652ecc4533eccbbf5b74a1 100644
 --- a/dist/commands/download/firefox.js
 +++ b/dist/commands/download/firefox.js
-@@ -52,7 +52,7 @@ async function unpackFirefoxSource(name) {
+@@ -52,14 +52,14 @@ async function unpackFirefoxSource(name) {
      }
      await (0, execa_1.default)(tarExec, [
          '--strip-components=1',
@@ -11,6 +11,14 @@ index 93e14e5abf11963b47f657a61f4e0a7e5bf1cf42..2058d7dfc022935541134cbf17d3b9e5
          '-xf',
          (0, fs_1.windowsPathToUnix)((0, node_path_1.resolve)(constants_1.MELON_TMP_DIR, name)),
          '-C',
+         (0, fs_1.windowsPathToUnix)(constants_1.ENGINE_DIR),
+     ].filter(Boolean), {
+         // HACK: Use bash shell on windows to get a sane version of tar that works
+-        shell: constants_1.BASH_PATH || false,
++        shell: /*constants_1.BASH_PATH || */false,
+     });
+ }
+ async function downloadFirefoxSource(version) {
 diff --git a/dist/commands/license-check.js b/dist/commands/license-check.js
 index e8672b09fcd704a66e2fed3872eae91295796a34..9152903d72472d6cb6ddfd11eba9e0a5a70cb83b 100644
 --- a/dist/commands/license-check.js
