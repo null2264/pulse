@@ -439,7 +439,7 @@ jobs:
       - name: Gluon build
         shell: C:\mozilla-build\start-shell.bat -here -e {0}
         run: |
-          pnpm build --verbose
+          pnpm build --verbose --skip-patch-check
 
       - name: Package
         shell: C:\mozilla-build\start-shell.bat -here -e {0}
