@@ -404,6 +404,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: Setup MozillaBuild
+        shell: bash
         run: |
           curl -L https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe --output MozillaBuildSetup-Latest.exe
           "/c/Program Files/7-Zip/7z.exe" x MozillaBuildSetup-Latest.exe -o /c/mozilla-build
