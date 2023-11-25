@@ -322,8 +322,8 @@ jobs:
 
       - name: Setup git
         run: |
-          git config --global user.email "trickypr@users.noreply.github.com"
-          git config --global user.name "TrickyPR"
+          git config --global user.email "null2264@users.noreply.github.com"
+          git config --global user.name "null2264"
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -366,14 +366,14 @@ jobs:
           cd ..
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: pulse-browser.source.tar.gz
           path: ./pulse-browser.source.tar.gz
 
   windows:
     runs-on: windows-latest
-    needs: [build-data]
+    needs: [source]
 
     steps:
       - uses: actions/checkout@v3
@@ -407,22 +407,33 @@ jobs:
       - name: Load gluon CI setup
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
-      - name: Download
-        run: pnpm download
+      - name: Download source
+        uses: actions/download-artifact@v3
+        with:
+          name: pulse-browser.source.tar.gz
 
-      - name: Import
-        run: pnpm imp
+      - name: Extract source
+        uses: a7ul/tar-action@v1.1.0
+        id: extract
+        with:
+          command: x
+          cwd: ./engine
+          files: pulse-browser.source.tar.gz
 
-      - name: Build
-        shell: pwsh
+      - name: Bootstrap
+        shell: bash
         run: |
-          cd /c/actions-runner/_work/browser/browser # mozillabuild defaults to ~
-          pnpm build --skip-patch-check
+          cd engine
+          ./mach --no-interactive bootstrap --application-choice browser
+          cd ..
+
+      - name: Gluon build
+        shell: bash
+        run: pnpm build --verbose
 
       - name: Package
-        shell: pwsh
+        shell: bash
         run: |
-          cd /c/actions-runner/_work/browser/browser # mozillabuild defaults to ~
           pnpm package
           mv ./dist/output.mar windows.mar
 
