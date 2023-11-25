@@ -202,7 +202,7 @@ jobs:
           path: ./dist/update
 
   mac:
-    runs-on: macos-latest
+    runs-on: macos-13
     needs: [build-data]
 
     steps:
