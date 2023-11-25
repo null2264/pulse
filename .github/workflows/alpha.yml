@@ -416,6 +416,8 @@ jobs:
         shell: bash
         run: |
           ls -l
+          rm -rf engine
+          mkdir engine
           tar --strip-components=1 -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
