@@ -357,24 +357,11 @@ jobs:
       - name: Import
         run: pnpm imp --verbose
 
-      - name: Compress EVERYTHING! (for Windows build)
-        run: |
-          cd engine
-          # -h is used to dereference symlinks
-          tar --use-compress-program=zstd -hcf ../pulse-browser-raw.source.tar.gz .
-          cd ..
-
-      - name: Upload artifact (for Windows build)
-        uses: actions/upload-artifact@v3
-        with:
-          name: pulse-browser-raw.source.tar.gz
-          path: ./pulse-browser-raw.source.tar.gz
-
       - name: Compress
         run: |
           cd engine
           # -h is used to dereference symlinks
-          tar --use-compress-program=zstd -hcf ../pulse-browser.source.tar.gz *
+          tar --use-compress-program=zstd -hcf ../pulse-browser.source.tar.gz .
           cd ..
 
       - name: Upload artifact
@@ -429,14 +416,14 @@ jobs:
       - name: Download source
         uses: actions/download-artifact@v3
         with:
-          name: pulse-browser-raw.source.tar.gz
+          name: pulse-browser.source.tar.gz
 
       - name: Unpack source
         shell: bash
         run: |
           rm -rf engine
           mkdir engine
-          tar -xf pulse-browser-raw.source.tar.gz -C ./engine
+          tar -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
         shell: C:\mozilla-build\start-shell.bat -here -e {0}
