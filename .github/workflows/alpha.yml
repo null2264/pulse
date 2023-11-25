@@ -273,6 +273,8 @@ jobs:
 
       - name: Bootstrap
         run: |
+          rm -rf ./engine/third_party/python/six
+          rm -rf ./engine/third_party/python/urllib3
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
@@ -401,6 +403,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: Setup MozillaBuild
+        run: |
+          curl -L https://ftp.mozilla.org/pub/mozilla/libraries/win32/MozillaBuildSetup-Latest.exe --output MozillaBuildSetup-Latest.exe
+          "/c/Program Files/7-Zip/7z.exe" x MozillaBuildSetup-Latest.exe -o /c/mozilla-build
+
       - name: Install dependencies
         run: pnpm install
 
@@ -415,7 +422,6 @@ jobs:
       - name: Unpack source
         shell: bash
         run: |
-          echo $PWD
           rm -rf engine
           mkdir engine
           tar -xf pulse-browser.source.tar.gz -C ./engine
@@ -423,7 +429,6 @@ jobs:
       - name: Bootstrap
         shell: bash
         run: |
-          export MOZBUILD_STATE_PATH=$PWD
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
@@ -431,13 +436,11 @@ jobs:
       - name: Gluon build
         shell: bash
         run: |
-          export MOZBUILD_STATE_PATH=$PWD
           pnpm build --verbose
 
       - name: Package
         shell: bash
         run: |
-          export MOZBUILD_STATE_PATH=$PWD
           pnpm package
           mv ./dist/output.mar windows.mar
 
