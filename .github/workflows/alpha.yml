@@ -415,7 +415,7 @@ jobs:
       - name: Unpack source
         shell: bash
         run: |
-          ls -l
+          echo $PWD
           rm -rf engine
           mkdir engine
           tar -xf pulse-browser.source.tar.gz -C ./engine
