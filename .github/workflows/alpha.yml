@@ -373,7 +373,7 @@ jobs:
 
   windows:
     runs-on: windows-latest
-    needs: [source]
+    needs: [build-data, source]
 
     steps:
       - uses: actions/checkout@v3
