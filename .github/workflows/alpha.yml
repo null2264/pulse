@@ -265,17 +265,18 @@ jobs:
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
       - name: Download firefox source and dependancies
-        run: pnpm download
+        run: |
+          pnpm download
+          # Workaround for 'Bug 1857492', force update six and urllib3
+          rm -rf ./engine/third_party/python/six
+          rm -rf ./engine/third_party/python/urllib3
+          pip install six urllib3 -t ./engine/third_party/python/
 
       - name: Import
         run: pnpm imp
 
       - name: Bootstrap
         run: |
-          # Workaround for 'Bug 1857492', force update six and urllib3
-          rm -rf ./engine/third_party/python/six
-          rm -rf ./engine/third_party/python/urllib3
-          pip install six urllib3 -t ./engine/third_party/python/
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
