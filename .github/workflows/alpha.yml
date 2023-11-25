@@ -423,17 +423,21 @@ jobs:
       - name: Bootstrap
         shell: bash
         run: |
+          export MOZBUILD_STATE_PATH=$PWD
           cd engine
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
 
       - name: Gluon build
         shell: bash
-        run: pnpm build --verbose
+        run: |
+          export MOZBUILD_STATE_PATH=$PWD
+          pnpm build --verbose
 
       - name: Package
         shell: bash
         run: |
+          export MOZBUILD_STATE_PATH=$PWD
           pnpm package
           mv ./dist/output.mar windows.mar
 
