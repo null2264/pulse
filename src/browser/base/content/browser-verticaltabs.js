@@ -56,7 +56,7 @@ var VerticalTabs = {
    * @return {Boolean} true if the vertical tabs feature is enabled.
    */
   get verticalTabsEnabled() {
-    return Services.prefs.getBoolPref(VERTICAL_TABS_POSITION, false)
+    return Services.prefs.getBoolPref(VERTICAL_TABS_POSITION, true)
   },
 
   get showCloseButton() {
