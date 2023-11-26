@@ -73,6 +73,21 @@
   display: none;
 }
 
+/** Tabs close button should still shown on collapse */
+#TabsToolbar[collapse="true"]:hover .tabbrowser-tab .tab-content > .tab-close-button:not([selected]) {
+  display: inline-flex !important;
+}
+
+/** Hide and show tab title on collapse */
+#TabsToolbar[collapse="true"] .tabbrowser-tab .tab-content > .tab-label-container {
+  transition: opacity 150ms ease-in-out;
+  opacity: 0;
+}
+#TabsToolbar[collapse="true"]:hover .tabbrowser-tab .tab-content > .tab-label-container {
+  transition: opacity 150ms ease-in-out;
+  opacity: 1.0;
+}
+
 /* ========================================================================== */
 /* Tab styles */
 
