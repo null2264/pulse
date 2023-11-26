@@ -475,13 +475,12 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
 
-      - name: release-github
-        uses: 'marvinpinto/action-automatic-releases@latest'
+      - name: Publish
+        uses: softprops/action-gh-release@v1
         with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          automatic_release_tag: ${{ needs.build-data.outputs.version }}
+          name: 'Alpha build'
+          tag_name: ${{ needs.build-data.outputs.version }}
           prerelease: true
-          title: 'Alpha build'
           files: |
             pulse-browser.linux.tar.bz2
             pulse-browser.source.tar.gz
