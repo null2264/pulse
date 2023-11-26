@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: recursive
 
@@ -38,7 +38,7 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 🔖 Upload update addon manifests
+          commit_message: chore: Upload update addon manifests
           commit_user_name: Z3R0
           commit_user_email: palembani@gmail.com
           repository: ./updates
