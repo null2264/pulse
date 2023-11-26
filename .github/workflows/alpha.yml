@@ -68,7 +68,7 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: chore: Update version to ${{ steps.data.outputs.version }}
+          commit_message: 'chore: Update version to ${{ steps.data.outputs.version }}'
           commit_user_name: Z3R0
           commit_user_email: palembani@gmail.com
 
@@ -509,7 +509,7 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: chore: Upload update manifests ${{ needs.build-data.outputs.version }}
+          commit_message: 'chore: Upload update manifests ${{ needs.build-data.outputs.version }}'
           commit_user_name: Z3R0
           commit_user_email: palembani@gmail.com
           repository: ./updates
