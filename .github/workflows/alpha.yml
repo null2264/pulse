@@ -496,7 +496,7 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v3
         with:
-          repository: pulse-browser/updates
+          repository: null2264/pulse-updates
           path: updates
           token: ${{ secrets.ROBOT_TOKEN }}
 
