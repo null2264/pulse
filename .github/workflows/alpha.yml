@@ -280,6 +280,7 @@ jobs:
         with:
           submodules: recursive
 
+      # Bug 1857492 - Force mac to use Python v3.10 to avoid ImportError
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
