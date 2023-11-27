@@ -481,14 +481,15 @@ jobs:
           name: 'Alpha build'
           tag_name: ${{ needs.build-data.outputs.version }}
           prerelease: true
+          fail_on_unmatched_files: true
           files: |
-            pulse-browser.linux.tar.bz2
-            pulse-browser.source.tar.gz
-            pulse-browser.macos.dmg
-            pulse-browser.installer.exe
-            windows.mar
-            macos.mar
-            linux.mar
+            */pulse-browser.linux.tar.bz2
+            */pulse-browser.source.tar.gz
+            */pulse-browser.macos.dmg
+            */pulse-browser.installer.exe
+            */windows.mar
+            */macos.mar
+            */linux.mar
 
       - name: List
         run: find .
