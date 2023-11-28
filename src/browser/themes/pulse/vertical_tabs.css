@@ -74,7 +74,7 @@
 }
 
 /** Tabs close button should still shown on collapse */
-#TabsToolbar[collapse="true"]:hover .tabbrowser-tab .tab-content > .tab-close-button:not([selected]) {
+#TabsToolbar[collapse="true"]:hover .tabbrowser-tab .tab-content > .tab-close-button:not([pinned]):not([selected]) {
   display: inline-flex !important;
 }
 
