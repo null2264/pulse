@@ -475,6 +475,23 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
 
+      - name: Checksum artifacts
+        if: startsWith(github.ref, 'refs/tags/') && github.repository == 'skincanorg/skincan'
+        run: |
+          set -e
+
+          sha=`sha256sum */pulse-browser.linux.tar.bz2 | awk '{ print $1 }'`
+          echo "LINUX_SHA=$sha" >> $GITHUB_ENV
+
+          sha=`sha256sum */pulse-browser.macos.dmg | awk '{ print $1 }'`
+          echo "MAC_SHA=$sha" >> $GITHUB_ENV
+
+          sha=`sha256sum */pulse-browser.installer.exe | awk '{ print $1 }'`
+          echo "WINDOWS_SHA=$sha" >> $GITHUB_ENV
+
+          sha=`sha256sum */pulse-browser.source.tar.gz | awk '{ print $1 }'`
+          echo "SOURCE_SHA=$sha" >> $GITHUB_ENV
+
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
@@ -482,6 +499,17 @@ jobs:
           tag_name: ${{ needs.build-data.outputs.version }}
           prerelease: true
           fail_on_unmatched_files: true
+          body: |
+            ---
+
+            ### Checksums
+
+            | Variant | SHA-256 |
+            | ------- | ------- |
+            | Linux (`pulse-browser.linux.tar.bz2`) | ${{ env.LINUX_SHA }} |
+            | macOS (`pulse-browser.macos.dmg`) | ${{ env.MAC_SHA }} |
+            | Windows (`pulse-browser.installer.exe`) | ${{ env.WINDOWS_SHA }} |
+            | Source (`pulse-browser.source.tar.gz`) | ${{ env.SOURCE_SHA }} |
           files: |
             */pulse-browser.linux.tar.bz2
             */pulse-browser.source.tar.gz
