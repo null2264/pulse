@@ -74,6 +74,23 @@
         }
       }
     },
+    "test": {
+      "backgroundColor": "#2B2A33",
+      "brandShorterName": "Pulse",
+      "brandShortName": "Pulse Browser",
+      "brandFullName": "Pulse Browser Test",
+      "release": {
+        "displayVersion": "0.0.0",
+        "github": {
+          "repo": "pulse-browser/browser"
+        },
+        "x86": {
+          "windowsMar": "windows.mar",
+          "macosMar": "macosIntel.mar",
+          "linuxMar": "linux.mar"
+        }
+      }
+    },
     "alpha": {
       "backgroundColor": "#2B2A33",
       "brandShorterName": "Pulse",
