@@ -63,7 +63,7 @@ jobs:
         run: pnpm run gluon lc
 
       - name: Load gluon CI setup
-        run: pnpm gluon ci --brand test --display-version 0.0.1
+        run: pnpm gluon ci --brand test --display-version 0.0.0
 
       - name: Download firefox source and dependancies
         run: pnpm download --verbose
