@@ -1,16 +1,6 @@
 --- a/browser/themes/ThemeVariableMap.sys.mjs
 +++ b/browser/themes/ThemeVariableMap.sys.mjs
-@@ -114,6 +114,9 @@
-     "--sidebar-background-color",
-     {
-       lwtProperty: "sidebar",
-+      // Pulse: we want to use the sidebar color in the sidebar tabs, which are
-+      // under the `browser` parent rather than the `sidebar-box` parent
-+      optionalElementID: "browser",
-       processColor(rgbaChannels) {
-         if (!rgbaChannels) {
-           return null;
-@@ -159,6 +162,18 @@
+@@ -159,6 +159,18 @@
        },
      },
    ],

@@ -1,10 +1,9 @@
 --- a/browser/themes/shared/browser-shared.css
 +++ b/browser/themes/shared/browser-shared.css
-@@ -23,6 +23,10 @@
- @import url("chrome://browser/skin/customizableui/customizeMode.css");
+@@ -24,6 +24,10 @@
  @import url("chrome://browser/skin/UITour.css");
  @import url("chrome://browser/skin/formautofill-notification.css");
-+ 
+ 
 +@import url("chrome://browser/skin/pulse/sidebar_tabs.css");
 +@import url("chrome://browser/skin/pulse/tab_tweaks.css");
 +@import url("chrome://browser/skin/pulse/vertical_tabs.css");
