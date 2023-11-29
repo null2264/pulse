@@ -139,7 +139,7 @@ jobs:
 
   linux:
     runs-on: ubuntu-latest
-    needs: [build-data]
+    needs: [source, build-data]
 
     steps:
       - name: Install Node.js
@@ -225,11 +225,17 @@ jobs:
       - name: Load gluon CI setup
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
-      - name: Download firefox source and dependencies
-        run: pnpm download
+      - name: Download source
+        uses: actions/download-artifact@v3
+        with:
+          name: pulse-browser.source.tar.gz
 
-      - name: Import
-        run: pnpm imp
+      - name: Unpack source
+        shell: bash
+        run: |
+          rm -rf engine
+          mkdir engine
+          tar -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
         run: |
@@ -237,8 +243,8 @@ jobs:
           ./mach --no-interactive bootstrap --application-choice browser
           cd ..
 
-      - name: Build
-        run: pnpm build
+      - name: Gluon build
+        run: pnpm build --verbose --skip-patch-check
 
       - name: Package
         run: pnpm package
@@ -268,7 +274,7 @@ jobs:
 
   mac:
     runs-on: macos-13
-    needs: [build-data]
+    needs: [source, build-data]
 
     steps:
       - name: Install Node.js
@@ -334,11 +340,17 @@ jobs:
       - name: Load gluon CI setup
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
-      - name: Download firefox source and dependancies
-        run: pnpm download
+      - name: Download source
+        uses: actions/download-artifact@v3
+        with:
+          name: pulse-browser.source.tar.gz
 
-      - name: Import
-        run: pnpm imp
+      - name: Unpack source
+        shell: bash
+        run: |
+          rm -rf engine
+          mkdir engine
+          tar -xf pulse-browser.source.tar.gz -C ./engine
 
       - name: Bootstrap
         run: |
@@ -347,7 +359,7 @@ jobs:
           cd ..
 
       - name: Gluon build
-        run: pnpm build --verbose
+        run: pnpm build --verbose --skip-patch-check
 
       - name: Package
         run: pnpm gluon package
@@ -377,7 +389,7 @@ jobs:
 
   windows:
     runs-on: windows-latest
-    needs: [build-data, source]
+    needs: [source, build-data]
 
     steps:
       - uses: actions/checkout@v3
@@ -439,8 +451,7 @@ jobs:
 
       - name: Gluon build
         shell: C:\mozilla-build\start-shell.bat -here -e {0}
-        run: |
-          pnpm build --verbose --skip-patch-check
+        run: pnpm build --verbose --skip-patch-check
 
       - name: Package
         shell: C:\mozilla-build\start-shell.bat -here -e {0}
