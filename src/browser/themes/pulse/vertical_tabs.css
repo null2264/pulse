@@ -105,6 +105,14 @@
     max-height 150ms ease-in-out;
 }
 
+#browser #TabsToolbar #tabbrowser-tabs {
+    max-height: calc(100% - calc(var(--tab-min-height) - 2px));
+}
+
+#browser #TabsToolbar #tabbrowser-tabs #tabbrowser-arrowscrollbox {
+    max-height: 100%;
+}
+
 #browser #TabsToolbar .tab-background {
   height: calc(var(--tab-min-height) - 2px);
 }
