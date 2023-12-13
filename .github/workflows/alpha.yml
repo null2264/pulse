@@ -2,6 +2,11 @@ name: Alpha builds
 
 on:
   workflow_dispatch:
+    inputs:
+      bumpVersion:
+        type: boolean
+        description: Bump version before building
+        default: true
 
 jobs:
   build-data:
@@ -50,6 +55,7 @@ jobs:
           npm i -g gluon-build@next
 
       - name: Bump version
+        if: ${{ inputs.bumpVersion }}
         run: |
           pnpm gluon ci --brand alpha --bump prerelease
 
@@ -477,7 +483,7 @@ jobs:
     name: Release
     needs: [build-data, linux, source, mac, windows]
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/alpha' }}
+    if: ${{ github.ref == 'refs/heads/alpha' && inputs.bumpVersion }}
 
     steps:
       - uses: actions/download-artifact@v3
