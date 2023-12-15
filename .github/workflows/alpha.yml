@@ -292,11 +292,6 @@ jobs:
         with:
           submodules: recursive
 
-      # Bug 1857492 - Force mac to use Python v3.10 to avoid ImportError
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
       - name: Setup git
         run: |
           git config --global user.email "null2264@users.noreply.github.com"
@@ -304,7 +299,6 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          brew install cairo sccache gnu-tar mercurial
           sudo pip install setuptools
 
       - name: Force usage fo gnu-tar
