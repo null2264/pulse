@@ -59,6 +59,11 @@ jobs:
         run: |
           pnpm gluon ci --brand alpha --bump prerelease
 
+      - name: Brand
+        if: ${{ !inputs.bumpVersion }}
+        run: |
+          pnpm gluon ci --brand alpha
+
       - name: Debug
         run: |
           gluon get version
