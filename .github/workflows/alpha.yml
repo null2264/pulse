@@ -297,6 +297,10 @@ jobs:
         with:
           submodules: recursive
 
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
       - name: Setup git
         run: |
           git config --global user.email "null2264@users.noreply.github.com"
@@ -304,7 +308,6 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          brew unlink python@3.12 && brew link --overwrite python@3.12
           brew install cairo sccache gnu-tar mercurial
           sudo pip install setuptools
 
