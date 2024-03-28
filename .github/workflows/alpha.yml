@@ -131,7 +131,7 @@ jobs:
 
       - name: Clean up
         run: |
-          ls -l ./engine/browser/extensions # FIXME
+          ls -l ./engine/browser # FIXME
 
       - name: Download firefox source and dependancies
         run: pnpm download --verbose
