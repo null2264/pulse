@@ -129,10 +129,6 @@ jobs:
       - name: Load gluon CI setup
         run: pnpm gluon ci --brand alpha --display-version ${{ needs.build-data.outputs.version }}
 
-      - name: Clean up
-        run: |
-          ls -l ./engine/browser # FIXME
-
       - name: Download firefox source and dependancies
         run: pnpm download --verbose
 
