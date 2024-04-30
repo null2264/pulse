@@ -1,0 +1,13 @@
+diff --git a/browser/components/aboutwelcome/jar.mn b/browser/components/aboutwelcome/jar.mn
+index 278bd99..01b8d1c 100644
+--- a/browser/components/aboutwelcome/jar.mn
++++ b/browser/components/aboutwelcome/jar.mn
+@@ -6,6 +6,8 @@ browser.jar:
+   content/browser/aboutwelcome/aboutwelcome.bundle.js (./content/aboutwelcome.bundle.js)
+   content/browser/aboutwelcome/aboutwelcome.css (./content/aboutwelcome.css)
+   content/browser/aboutwelcome/aboutwelcome.html (./content/aboutwelcome.html)
++  content/browser/aboutwelcome/pulse.css (./content/pulse.css)
++  content/browser/aboutwelcome/browser-preview.png (./content/browser-preview.png)
+ 
+ # This section is for image assets for about:welcome. These are currently
+ # placed in the chrome://activity-stream/ path to provide backwards compability
