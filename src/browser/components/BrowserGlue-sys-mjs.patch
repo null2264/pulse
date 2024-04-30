@@ -2,10 +2,11 @@ diff --git a/browser/components/BrowserGlue.sys.mjs b/browser/components/Browser
 index 92acb0c98ca47dee170a723ca64a936ff47fd80c..f8ecf6643cab815de9316decc0861b00fdfe9db4 100644
 --- a/browser/components/BrowserGlue.sys.mjs
 +++ b/browser/components/BrowserGlue.sys.mjs
-@@ -569,14 +569,8 @@ let JSWINDOWACTORS = {
+@@ -580,14 +580,8 @@ let JSWINDOWACTORS = {
      includeChrome: true,
      allFrames: true,
      matches: [
+-      "about:asrouter",
 -      "about:home",
 -      "about:newtab",
 -      "about:welcome",
@@ -13,9 +14,8 @@ index 92acb0c98ca47dee170a723ca64a936ff47fd80c..f8ecf6643cab815de9316decc0861b00
 -      "chrome://browser/content/places/historySidebar.xhtml",
 -      "chrome://browser/content/places/bookmarksSidebar.xhtml",
 -      "about:firefoxview",
--      "about:firefoxview-next",
 +      "about:*",
-+      "chrome://*"
++      "chrome://*",
      ],
    },
  
