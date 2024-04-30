@@ -364,15 +364,15 @@ index f5def93f56fc8d02d6ae6834ca8d2df0aead2379..b607ca233ed7219bff900a98fd1e7309
          this.browser.addEventListener(
            "load",
            event => {
-@@ -624,11 +842,14 @@ var SidebarUI = {
+@@ -624,11 +624,14 @@ var SidebarUI = {
      // create a new content viewer because the old one doesn't get destroyed
      // until about:blank has loaded (which does not happen as long as the
      // element is hidden).
 -    this.browser.setAttribute("src", "about:blank");
--    this.browser.docShell.createAboutBlankContentViewer(null, null);
+-    this.browser.docShell.createAboutBlankDocumentViewer(null, null);
 +    if (!this._keepTabsActivePref) {
-+      this.browser.setAttribute("src", "about:blank");
-+      this.browser.docShell.createAboutBlankContentViewer(null, null);
++        this.browser.setAttribute("src", "about:blank");
++        this.browser.docShell.createAboutBlankDocumentViewer(null, null);
 +    }
  
      this._box.removeAttribute("checked");
