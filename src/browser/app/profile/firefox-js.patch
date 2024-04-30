@@ -2,10 +2,12 @@ diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
 index 29e5b7316f3549181f4a1415a8324e1bf81519a4..58b672329b5c0596b773db659220a59de5e85482 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -3031,3 +3031,5 @@ pref("browser.mailto.dualPrompt.os", false);
+@@ -3031,3 +3031,8 @@ pref("browser.mailto.dualPrompt.os", false);
  // When visiting a site which uses registerProtocolHandler: Ask the user to set Firefox as
  // default mailto handler.
  pref("browser.mailto.prompt.os", true);
 +
 +#include pulse-browser.js
-\ No newline at end of file
+
+pref("browser.backup.enabled", false);
+
