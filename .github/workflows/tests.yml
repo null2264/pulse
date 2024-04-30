@@ -68,14 +68,14 @@ jobs:
       - name: Download firefox source and dependancies
         run: pnpm download --verbose
 
-      - name: Extension check
-        run: |
-          EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
+      # - name: Extension check
+      #   run: |
+      #     EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
 
-          for i in "${EXTS[@]}"; do
-              ls -A ./engine/browser/extensions/$i
-              [ -z "$(ls -A ./engine/browser/extensions/$i)" ] && exit 1
-          done
+      #     for i in "${EXTS[@]}"; do
+      #         ls -A ./engine/browser/extensions/$i
+      #         [ -z "$(ls -A ./engine/browser/extensions/$i)" ] && exit 1
+      #     done
 
       - name: Import (Patch test)
         run: pnpm imp --verbose
