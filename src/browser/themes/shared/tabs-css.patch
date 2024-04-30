@@ -1,0 +1,12 @@
+diff --git a/browser/themes/shared/tabs.css b/browser/themes/shared/tabs.css
+index eb92f71..eb3107c 100644
+--- a/browser/themes/shared/tabs.css
++++ b/browser/themes/shared/tabs.css
+@@ -638,7 +638,7 @@
+   margin-inline-start: 2px;
+ }
+ 
+-:root[privatebrowsingmode] :is(#firefox-view-button, #menu_openFirefoxView) {
++:root :is(#firefox-view-button, #menu_openFirefoxView) {
+   display: none;
+ }
