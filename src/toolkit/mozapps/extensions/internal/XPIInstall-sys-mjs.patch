@@ -1,7 +1,6 @@
-diff --git a/toolkit/mozapps/extensions/internal/XPIInstall.jsm b/toolkit/mozapps/extensions/internal/XPIInstall.jsm
-index e0cac973f657048b34ee46e090dd0f3a85f1d91e..cbfa7b8130cee804850c13ad260f46dae18ef856 100644
---- a/toolkit/mozapps/extensions/internal/XPIInstall.jsm
-+++ b/toolkit/mozapps/extensions/internal/XPIInstall.jsm
+diff --git a/toolkit/mozapps/extensions/internal/XPIInstall.sys.mjs b/toolkit/mozapps/extensions/internal/XPIInstall.sys.mjs
+--- a/toolkit/mozapps/extensions/internal/XPIInstall.sys.mjs
++++ b/toolkit/mozapps/extensions/internal/XPIInstall.sys.mjs
 @@ -2922,11 +2922,13 @@ var UpdateChecker = function (
      "resource://gre/modules/addons/AddonUpdateChecker.sys.mjs"
    ));
