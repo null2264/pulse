@@ -72,11 +72,8 @@ jobs:
         run: |
           EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
 
-          echo $EXTS
-
           for i in "${EXTS[@]}"; do
-              echo $i
-              [ "$(find ./engine/browser/extensions/$i -maxdepth 0 -empty)" ] && exit 1
+              [ -z "$(ls ./engine/browser/extensions/$i)" ] && exit 1
           done
 
       - name: Import (Patch test)
