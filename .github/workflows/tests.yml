@@ -34,8 +34,8 @@ jobs:
       - name: Check license
         run: pnpm run gluon lc
 
-  patch-test:
-    name: Patch test
+  build-test:
+    name: Build test
     runs-on: ubuntu-latest
 
     steps:
@@ -68,5 +68,13 @@ jobs:
       - name: Download firefox source and dependancies
         run: pnpm download --verbose
 
-      - name: Import
+      - name: Extension check
+        run: |
+          EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
+
+          for i in "${EXTS[@]}"; do
+                  [ "$(find ./engine/browser/extensions/$i -maxdepth 0 -empty)" ] && exit 1
+          done
+
+      - name: Import (Patch test)
         run: pnpm imp --verbose
