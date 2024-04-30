@@ -10,14 +10,19 @@ index 0bc3e362057b69754919b0e4a57eeb1846a7e6e5..6cc97a82b354274e8367d6aa00374bf8
      if (gToolbarKeyNavEnabled) {
        ToolbarKeyboardNavigator.init();
      }
-@@ -9865,9 +9866,7 @@ var FirefoxViewHandler = {
-     NimbusFeatures.firefoxViewNext.offUpdate(this._updateEnabledState);
+@@ -10013,6 +10014,7 @@ var FirefoxViewHandler = {
+     return document.getElementById(this.BUTTON_ID);
    },
-   _updateEnabledState() {
--    this._enabled =
--      NimbusFeatures.majorRelease2022.getVariable("firefoxView") ||
--      NimbusFeatures.firefoxViewNext.getVariable("enabled");
-+    this._enabled = false;
-     // We use a root attribute because there's no guarantee the button is in the
-     // DOM, and visibility changes need to take effect even if it isn't in the DOM
-     // right now.
+   init() {
++    return;
+     CustomizableUI.addListener(this);
+ 
+     ChromeUtils.defineESModuleGetters(this, {
+@@ -10021,6 +10023,7 @@ var FirefoxViewHandler = {
+     Services.obs.addObserver(this, "firefoxview-notification-dot-update");
+   },
+   uninit() {
++    return;
+     CustomizableUI.removeListener(this);
+     Services.obs.removeObserver(this, "firefoxview-notification-dot-update");
+   },
