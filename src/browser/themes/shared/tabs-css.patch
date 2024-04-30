@@ -10,3 +10,4 @@ index eb92f71..eb3107c 100644
 +:root :is(#firefox-view-button, #menu_openFirefoxView) {
    display: none;
  }
+
