@@ -73,8 +73,7 @@ jobs:
           EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
 
           for i in "${EXTS[@]}"; do
-              find ./engine/browser/extensions/$i -maxdepth 0 -empty
-              #[ "$(find ./engine/browser/extensions/$i -maxdepth 0 -empty)" ] && exit 1
+              [ ! "$(find ./engine/browser/extensions/$i -maxdepth 0 -empty)" ] && exit 1
           done
 
       - name: Import (Patch test)
