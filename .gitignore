@@ -114,3 +114,4 @@ node_modules/
 
 # Python
 .pdm-python
+__pycache__/
