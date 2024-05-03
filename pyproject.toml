@@ -1,0 +1,18 @@
+[project]
+name = "pulse"
+version = "0.0.1"
+description = "Firefox fork"
+authors = [
+    {name = "Ahmad Ansori Palembani", email = "palembani@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "0BSD"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true
