@@ -15,30 +15,30 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Setup Gluon
-        run: yarn
+      # - name: Setup Gluon
+      #   run: yarn
 
-      - name: Load config
-        run: yarn gluon ci --brand ${GITHUB_REF##*/}
+      # - name: Load config
+      #   run: yarn gluon ci --brand ${GITHUB_REF##*/}
 
-      - name: Generate update manifest
-        run: yarn gluon updates-addons
+      # - name: Generate update manifest
+      #   run: yarn gluon updates-addons
 
-      - name: Checkout tools repo
-        uses: actions/checkout@v4
-        with:
-          repository: null2264/pulse-updates
-          path: updates
-          token: ${{ secrets.ROBOT_TOKEN }}
+      # - name: Checkout tools repo
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: null2264/pulse-updates
+      #     path: updates
+      #     token: ${{ secrets.ROBOT_TOKEN }}
 
-      - name: Copy update manifests
-        run: |
-          mkdir -p updates/browser
-          cp -a dist/update/. updates/
+      # - name: Copy update manifests
+      #   run: |
+      #     mkdir -p updates/browser
+      #     cp -a dist/update/. updates/
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'chore: Upload update addon manifests'
-          commit_user_name: Z3R0
-          commit_user_email: palembani@gmail.com
-          repository: ./updates
+      # - uses: stefanzweifel/git-auto-commit-action@v4
+      #   with:
+      #     commit_message: 'chore: Upload update addon manifests'
+      #     commit_user_name: Z3R0
+      #     commit_user_email: palembani@gmail.com
+      #     repository: ./updates

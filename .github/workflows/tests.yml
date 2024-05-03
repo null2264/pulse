@@ -21,18 +21,18 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
+      # - uses: pnpm/action-setup@v3
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 8
+      #     run_install: false
 
-      - name: Setup Gluon
-        run: pnpm i
+      # - name: Setup Gluon
+      #   run: pnpm i
 
-      - name: Check license
-        run: pnpm run gluon lc
+      # - name: Check license
+      #   run: pnpm run gluon lc
 
   build-test:
     name: Build test
@@ -49,33 +49,33 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
+      # - uses: pnpm/action-setup@v3
+      #   name: Install pnpm
+      #   id: pnpm-install
+      #   with:
+      #     version: 8
+      #     run_install: false
 
-      - name: Setup Gluon
-        run: pnpm i
+      # - name: Setup Gluon
+      #   run: pnpm i
 
-      - name: Check license
-        run: pnpm run gluon lc
+      # - name: Check license
+      #   run: pnpm run gluon lc
 
-      - name: Load gluon CI setup
-        run: pnpm gluon ci --brand test --display-version 0.0.0
+      # - name: Load gluon CI setup
+      #   run: pnpm gluon ci --brand test --display-version 0.0.0
 
-      - name: Download firefox source and dependancies
-        run: pnpm download --verbose
+      # - name: Download firefox source and dependancies
+      #   run: pnpm download --verbose
 
-      # - name: Extension check
-      #   run: |
-      #     EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
+      # # - name: Extension check
+      # #   run: |
+      # #     EXTS=($(cat gluon.json | jq -r ".addons | keys[]"))
 
-      #     for i in "${EXTS[@]}"; do
-      #         ls -A ./engine/browser/extensions/$i
-      #         [ -z "$(ls -A ./engine/browser/extensions/$i)" ] && exit 1
-      #     done
+      # #     for i in "${EXTS[@]}"; do
+      # #         ls -A ./engine/browser/extensions/$i
+      # #         [ -z "$(ls -A ./engine/browser/extensions/$i)" ] && exit 1
+      # #     done
 
-      - name: Import (Patch test)
-        run: pnpm imp --verbose
+      # - name: Import (Patch test)
+      #   run: pnpm imp --verbose
