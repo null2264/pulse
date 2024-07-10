@@ -1,12 +1,12 @@
 diff --git a/browser/base/content/browser-box.inc.xhtml b/browser/base/content/browser-box.inc.xhtml
-index d445abe7e743b2ec5d46d42f8f149c000e3c7997..552bc997c4ca1955fdd09232a360d9f9e91ce682 100644
+index 16559b2..f38f5bd 100644
 --- a/browser/base/content/browser-box.inc.xhtml
 +++ b/browser/base/content/browser-box.inc.xhtml
-@@ -3,9 +3,13 @@
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- 
- <hbox flex="1" id="browser">
-+  <div id="sidebar-container" class="sidebar-container"> 
+@@ -6,9 +6,13 @@
+   <box context="sidebar-context-menu" id="sidebar-main" hidden="true">
+     <html:sidebar-main flex="1"></html:sidebar-main>
+   </box>
++  <div id="sidebar-container" class="sidebar-container">
 +    <vbox id="sidebar-icons"></vbox>
 +    <vbox id="sidebar-icons-bottom"></vbox>
 +  </div>
