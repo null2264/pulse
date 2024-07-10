@@ -1,13 +1,13 @@
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 29e5b7316f3549181f4a1415a8324e1bf81519a4..58b672329b5c0596b773db659220a59de5e85482 100644
+index b8aa711..b084a4b 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
-@@ -3030,6 +3030,8 @@ pref("browser.mailto.dualPrompt", false);
- // default mailto handler.
- pref("browser.mailto.prompt.os", true);
+@@ -3085,6 +3085,8 @@ pref("browser.mailto.dualPrompt.onLocationChange", false);
+ pref("browser.mailto.dualPrompt.dismissNotNowMinutes", 525600); // one year
+ pref("browser.mailto.dualPrompt.dismissXClickMinutes", 1440); // one day
  
 +#include pulse-browser.js
 +
- pref("browser.backup.enabled", false);
- 
- // Pref to enable the new profiles
+ // Pref to initialize the BackupService soon after startup.
+ pref("browser.backup.enabled", true);
+ // Pref to control whether scheduled backups run or not.
