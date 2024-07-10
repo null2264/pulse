@@ -285,6 +285,7 @@ jobs:
 
   mac:
     runs-on: macos-13
+    if: false
     needs: [source, build-data]
 
     steps:
@@ -401,6 +402,7 @@ jobs:
 
   windows:
     runs-on: windows-latest
+    if: false
     needs: [source, build-data]
 
     steps:
@@ -491,7 +493,7 @@ jobs:
 
   release:
     name: Release
-    needs: [build-data, linux, source, mac, windows]
+    needs: [build-data, linux, source] #, mac, windows]
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/alpha' && inputs.bumpVersion }}
 
@@ -505,11 +507,11 @@ jobs:
           sha=`sha256sum */pulse-browser.linux.tar.bz2 | awk '{ print $1 }'`
           echo "LINUX_SHA=$sha" >> $GITHUB_ENV
 
-          sha=`sha256sum */pulse-browser.macos.dmg | awk '{ print $1 }'`
-          echo "MAC_SHA=$sha" >> $GITHUB_ENV
+          # sha=`sha256sum */pulse-browser.macos.dmg | awk '{ print $1 }'`
+          # echo "MAC_SHA=$sha" >> $GITHUB_ENV
 
-          sha=`sha256sum */pulse-browser.installer.exe | awk '{ print $1 }'`
-          echo "WINDOWS_SHA=$sha" >> $GITHUB_ENV
+          # sha=`sha256sum */pulse-browser.installer.exe | awk '{ print $1 }'`
+          # echo "WINDOWS_SHA=$sha" >> $GITHUB_ENV
 
           sha=`sha256sum */pulse-browser.source.tar.gz | awk '{ print $1 }'`
           echo "SOURCE_SHA=$sha" >> $GITHUB_ENV
@@ -529,16 +531,10 @@ jobs:
             | Variant | SHA-256 |
             | ------- | ------- |
             | Linux (`pulse-browser.linux.tar.bz2`) | ${{ env.LINUX_SHA }} |
-            | macOS (`pulse-browser.macos.dmg`) | ${{ env.MAC_SHA }} |
-            | Windows (`pulse-browser.installer.exe`) | ${{ env.WINDOWS_SHA }} |
             | Source (`pulse-browser.source.tar.gz`) | ${{ env.SOURCE_SHA }} |
           files: |
             */pulse-browser.linux.tar.bz2
             */pulse-browser.source.tar.gz
-            */pulse-browser.macos.dmg
-            */pulse-browser.installer.exe
-            */windows.mar
-            */macos.mar
             */linux.mar
 
       - name: List
@@ -554,9 +550,7 @@ jobs:
       - name: Copy update manifests
         run: |
           mkdir -p updates/updates
-          cp -a macos_update_manifest/. updates/updates/
           cp -a linux_update_manifest/. updates/updates/
-          cp -a windows_update_manifest/. updates/updates/
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
